@@ -8,6 +8,11 @@ def house():
     print("You approach the house fast and then think better and slow down")
 
 
+def end():
+    print("The End")
+    quit()
+
+
 def cave():
     print("You hear water falling")
     print("Going further inside you see beautiful crystals reflecting light from an opening in the ceiling")
@@ -29,16 +34,19 @@ def boat():
 
 
 def the_window():
-    print("You slow your pace and creep quiety up to the window")
+    print("You slow your pace and creep quietly up to the window")
     print("You gasp in surprise at what you see")
 
 
 def the_door():
-    print("You decide to know on the door because you are a track star")
+    print("You decide to knock on the door because you are a track star")
     print("You are more than confident you can outrun anyone")
-    print("You swagger up to the door and knock")
-    door_opens =
-    print("Slowly the door opens to reveal an older woman and child")
+    print("Confidently you swagger up to the door and knock")
+    door_opens = ["Slowly the door opens to reveal an older woman and child",
+                  "Slowly the door opens to reveal a haggard old lady",
+                  "Slowly the door opens to reveal a group of children"]
+    rand_door = random.choice(door_opens)
+    print(rand_door)
     print("A little let down by their appearance you stumble back a step")
     print("Thinking you are ill, they invite you in for dinner")
 
@@ -46,11 +54,17 @@ def the_door():
 def the_win():
     print("You Win")
     print("You are awesome and rise above your fear")
+    repeat()
 
 
 def the_loss():
     print("You Lose.")
     print("Your fear got the best of you, but there is always next time")
+
+
+def game_over():
+    print("GAME OVER!!")
+    repeat()
 
 
 def run_away():
@@ -72,9 +86,22 @@ def in_the_boat():
 in_the_boat()
 
 
+def repeat():
+    play = int(input("Would you like to play again? 1 for yes 2 for no: "))
+
+    if play == 1:
+        in_the_boat()
+        stay_or_go()
+        house_cave()
+    if play == 2:
+        print("GAME OVER")
+        end()
+
+
 def stay_or_go():
 
     go_or_stay = (int(input("Choose 1 to stay on the boat and 2 to be adventurous: ")))
+
     if go_or_stay == 1:
         print("You didn't go to the island but you lived to see another day.")
         print("You lose.")
@@ -87,6 +114,7 @@ def stay_or_go():
             stay_or_go()
         elif play_again == 2:
             print("Game Over")
+            end()
 
     elif go_or_stay == 2:
         print("You climb from the boat and pull it out of the water")
@@ -105,6 +133,9 @@ def house_cave():
     elif house_or_cave == 2:
         print("It's a bit scary but YOLO")
         cave()
+        the_win()
+        game_over()
+        repeat()
 
 
 house_cave()
@@ -112,29 +143,35 @@ house_cave()
 
 def window_or_door():
     print("As you draw closer to the house you see it has a large window and a very decorative door")
-    door_or_window = int(input("Choose 1 to peek into a window and 2 to knock on the door"))
+    door_or_window = int(input("Choose 1 to peek into a window and 2 to knock on the door: "))
     if door_or_window == 1:
         the_window()
-        print("Will you knock on the door or run away? Type 1 for yes and 2 for run")
+        track = int(input("Will you knock on the door or run away? Type 1 for yes and 2 for run: "))
+        if track == 2:
+            run_away()
+            game_over()
+            repeat()
+        elif track == 1:
+            the_door()
+            print("You have a wonderful time and are happy you chose to be friends")
+            the_win()
     else:
         print("Go to the door and knock")
-        go_in = int(input("Do you go in? Choose 1 for yes and 2 for no"))
+        go_in = int(input("Do you knock? Choose 1 for yes and 2 for no: "))
         if go_in == 1:
             the_door()
-        else:
+            invite = int(input("Do you accept? Type 1 for yes 2 for no: "))
+            if invite == 1:
+                print("You graciously accept the invitation and have a wonderful time")
+                the_win()
+            elif invite == 2:
+                print("You shriek in fright")
+                run_away()
+                the_loss()
+                repeat()
+        elif go_in == 2:
             run_away()
+            the_loss()
 
 
 window_or_door()
-
-
- #            print("You decide to go to the door and knock")
-#             print("As the door opens the most amazing aromas envelope you")
-#             print("A kindly older woman and a child greet you and invite you in for tea")
-#         else:
-#             print("You decide to know on the door because you are a track star")
-#             print("You are more than confident you can outrun anyone")
-#             print("You swagger up to the door and knock")
-#             print("Slowly the door opens to reveal an older woman and child")
-#             print("A little let down by their appearance you stumble back a step")
-#             print("Thinking you are ill, they invite you in for dinner")
