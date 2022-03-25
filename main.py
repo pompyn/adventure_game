@@ -88,7 +88,8 @@ in_the_boat()
 
 def repeat():
     play = int(input("Would you like to play again? 1 for yes 2 for no: "))
-
+    if play < 1 or play > 2:
+        repeat()
     if play == 1:
         in_the_boat()
         stay_or_go()
@@ -101,14 +102,18 @@ def repeat():
 def stay_or_go():
 
     go_or_stay = (int(input("Choose 1 to stay on the boat and 2 to be adventurous: ")))
-
+    # This one works
+    if go_or_stay < 1 or go_or_stay > 2:
+        stay_or_go()
     if go_or_stay == 1:
         print("You didn't go to the island but you lived to see another day.")
         print("You lose.")
         boat()
 
         play_again = (int(input("Would you like to play again? Choose 1 for yes and 2 for no: ")))
-
+        # this one works
+        if play_again < 1 or play_again > 2:
+            stay_or_go()
         if play_again == 1:
             in_the_boat()
             stay_or_go()
@@ -126,11 +131,14 @@ stay_or_go()
 
 
 def house_cave():
-    house_or_cave = int(input("Type 1 for the house and 2 for the cave: "))
-    if house_or_cave == 1:
+    cave_or_house = int(input("Type 1 for the house and 2 for the cave: "))
+    # This one works
+    if cave_or_house < 1 or cave_or_house > 2:
+        house_cave()
+    if cave_or_house == 1:
         print("Off you march to the house")
         house()
-    elif house_or_cave == 2:
+    elif cave_or_house == 2:
         print("It's a bit scary but YOLO")
         cave()
         the_win()
@@ -144,9 +152,15 @@ house_cave()
 def window_or_door():
     print("As you draw closer to the house you see it has a large window and a very decorative door")
     door_or_window = int(input("Choose 1 to peek into a window and 2 to knock on the door: "))
+    # This one works
+    if door_or_window < 1 or door_or_window > 2:
+        window_or_door()
     if door_or_window == 1:
         the_window()
         track = int(input("Will you knock on the door or run away? Type 1 for yes and 2 for run: "))
+        # This one works
+        if track < 1 or track > 2:
+            window_or_door()
         if track == 2:
             run_away()
             game_over()
@@ -158,6 +172,8 @@ def window_or_door():
     else:
         print("Go to the door and knock")
         go_in = int(input("Do you knock? Choose 1 for yes and 2 for no: "))
+        if go_in < 1 or go_in > 2:
+            window_or_door()
         if go_in == 1:
             the_door()
             invite = int(input("Do you accept? Type 1 for yes 2 for no: "))
